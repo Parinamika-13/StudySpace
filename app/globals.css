@@ -1,0 +1,142 @@
+/*@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------
+   🌱 Design System (Variables)
+------------------------------- */
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --text-primary: #111111;
+  --text-secondary: #6b7280;
+  --border: #e5e7eb;
+  --accent: #111111;
+  --radius: 18px;
+}
+
+/* ------------------------------
+   🌤 Base Styles
+------------------------------- */
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* Remove default ugly margins */
+body {
+  margin: 0;
+}
+
+/* ------------------------------
+   ✨ Text Selection
+------------------------------- */
+::selection {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* ------------------------------
+   🧊 Scrollbar (subtle & clean)
+------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+}
+
+/* ------------------------------
+   🧩 Reusable UI Feel
+------------------------------- */
+.card {
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+/* Buttons (soft & premium) */
+.btn-primary {
+  background-color: var(--accent);
+  color: white;
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  background-color: transparent;
+}
+
+/* ------------------------------
+   🌫 Smooth Transitions
+------------------------------- */
+* {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+
+  --text-primary: #111111;
+  --text-secondary: #6b7280;
+
+  --border: #e5e7eb;
+
+  /* 🌱 Sage / Matcha Accent */
+  --accent: #a3b18a;
+  --accent-soft: #e9eddf;
+
+  --radius: 18px;
+}
