@@ -1,77 +1,60 @@
-/*@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-*/
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ------------------------------
-   🌱 Design System (Variables)
-------------------------------- */
+
+/* ---------------------------------
+   🌷 PASTEL DESIGN SYSTEM
+---------------------------------- */
 :root {
-  --bg: #fafafa;
-  --surface: #ffffff;
-  --text-primary: #111111;
-  --text-secondary: #6b7280;
-  --border: #e5e7eb;
-  --accent: #111111;
-  --radius: 18px;
+  /* Backgrounds */
+  --bg-main: #f7f8f5;          /* soft off-white */
+  --bg-card: #ffffff;
+
+  /* Pastel accents */
+  --sage: #a3b18a;             /* matcha green */
+  --sage-soft: #e9eddf;        /* light sage */
+  --blush: #f3e8ee;            /* pastel pink */
+  --lavender: #eef1f8;         /* pastel blue */
+  --peach: #f6ede8;            /* warm peach */
+
+  /* Text */
+  --text-main: #2f2f2f;
+  --text-muted: #7a7a7a;
+
+  /* UI */
+  --radius-lg: 24px;
+  --radius-md: 18px;
 }
 
-/* ------------------------------
-   🌤 Base Styles
-------------------------------- */
+/* ---------------------------------
+   🌿 BASE STYLES
+---------------------------------- */
 html,
 body {
-  background-color: var(--bg);
-  color: var(--text-primary);
+  background-color: var(--bg-main);
+  color: var(--text-main);
   font-family: ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
   line-height: 1.6;
   letter-spacing: -0.01em;
 }
 
-/* Remove default ugly margins */
+/* Remove default margin */
 body {
   margin: 0;
 }
 
-/* ------------------------------
-   ✨ Text Selection
-------------------------------- */
+/* ---------------------------------
+   ✨ TEXT SELECTION
+---------------------------------- */
 ::selection {
-  background: rgba(0, 0, 0, 0.08);
+  background-color: var(--sage-soft);
 }
 
-/* ------------------------------
-   🧊 Scrollbar (subtle & clean)
-------------------------------- */
+/* ---------------------------------
+   🫧 SCROLLBAR (SOFT)
+---------------------------------- */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -85,58 +68,295 @@ body {
   border-radius: 20px;
 }
 
-/* ------------------------------
-   🧩 Reusable UI Feel
-------------------------------- */
+/* ---------------------------------
+   🧩 REUSABLE UI CLASSES
+---------------------------------- */
+
+/* Cards */
 .card {
-  background-color: var(--surface);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
-/* Buttons (soft & premium) */
+/* Soft pastel cards */
+.card-sage {
+  background-color: var(--sage-soft);
+  border-radius: var(--radius-lg);
+}
+
+.card-blush {
+  background-color: var(--blush);
+  border-radius: var(--radius-lg);
+}
+
+.card-lavender {
+  background-color: var(--lavender);
+  border-radius: var(--radius-lg);
+}
+
+/* Primary button */
 .btn-primary {
-  background-color: var(--accent);
+  background-color: var(--sage);
   color: white;
   border-radius: 999px;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 1.5rem;
   font-size: 0.875rem;
-  transition: opacity 0.2s ease;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .btn-primary:hover {
   opacity: 0.9;
+  transform: translateY(-1px);
 }
 
+/* Secondary button */
 .btn-secondary {
-  border: 1px solid var(--border);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 999px;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 1.5rem;
   font-size: 0.875rem;
   background-color: transparent;
+  transition: background-color 0.2s ease;
 }
 
-/* ------------------------------
-   🌫 Smooth Transitions
-------------------------------- */
+.btn-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* ---------------------------------
+   🌫️ SMOOTH GLOBAL TRANSITIONS
+---------------------------------- */
 * {
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease;
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
-:root {
-  --bg: #fafafa;
-  --surface: #ffffff;
 
-  --text-primary: #111111;
-  --text-secondary: #6b7280;
+/* ---------------------------------
+   ✨ Card Hover Magic
+---------------------------------- */
+.card,
+.card-sage,
+.card-blush,
+.card-lavender {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
 
-  --border: #e5e7eb;
+.card:hover,
+.card-sage:hover,
+.card-blush:hover,
+.card-lavender:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+}
 
-  /* 🌱 Sage / Matcha Accent */
-  --accent: #a3b18a;
-  --accent-soft: #e9eddf;
+.dashboard-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
 
-  --radius: 18px;
+.profile-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+}
+
+.profile-page {
+  max-width: 720px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.profile-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.record-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.muted {
+  color: #8a8a8a;
+  font-size: 0.9rem;
+}
+
+.mode-btn {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  background: #dfe6cf;
+  cursor: pointer;
+}
+
+.logout-btn {
+  background: #ffe2e2;
+  color: #8b0000;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.danger {
+  background: #fff5f5;
+}
+
+/* ---------------------------------
+   🌫️ SIGN UP AND LOGIN
+---------------------------------- */
+/* ===============================
+   🌌 COSMIC AUTH EXPERIENCE
+================================ */
+
+.cosmic-wrapper {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 20% 10%, #8b5cf6, transparent 35%),
+    radial-gradient(circle at 80% 80%, #ec4899, transparent 40%),
+    linear-gradient(180deg, #060014, #0b0220);
+  overflow: hidden;
+}
+
+/* ✨ Stars */
+.cosmic-stars::before,
+.cosmic-stars::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 70% 80%, white, transparent),
+    radial-gradient(1px 1px at 40% 60%, white, transparent),
+    radial-gradient(1px 1px at 90% 20%, white, transparent);
+  opacity: 0.5;
+  animation: twinkle 6s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.3; }
+  to { opacity: 0.7; }
+}
+
+/* 🫧 Card */
+.cosmic-card {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  padding: 52px 42px;
+  border-radius: 30px;
+  background: rgba(15, 10, 40, 0.75);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 0 60px rgba(168, 85, 247, 0.35),
+    inset 0 0 1px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  animation: floatIn 0.8s ease;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ✨ Title */
+.cosmic-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #e9d5ff, #c7d2fe, #fbcfe8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle */
+.cosmic-subtitle {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #d6d3ff;
+}
+
+/* 🌫 Form */
+.cosmic-form {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cosmic-input {
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+  font-size: 0.9rem;
+}
+
+.cosmic-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.cosmic-input:focus {
+  outline: none;
+  border-color: #c084fc;
+  box-shadow: 0 0 0 2px rgba(192, 132, 252, 0.3);
+}
+
+/* 🚀 Button */
+.cosmic-button {
+  margin-top: 8px;
+  padding: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  color: white;
+  font-size: 0.95rem;
+  transition: all 0.35s ease;
+}
+
+.cosmic-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(236, 72, 153, 0.5);
+}
+
+/* Footer */
+.cosmic-footer {
+  margin-top: 30px;
+  font-size: 0.85rem;
+  color: #c7c5ff;
+}
+
+.cosmic-footer span {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
